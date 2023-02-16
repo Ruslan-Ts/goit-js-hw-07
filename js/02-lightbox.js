@@ -2,27 +2,27 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const gallery = document.querySelector('.gallery');
 
-gallery.addEventListener('click', onGalleryClick)
+
 
 const markup = galleryItems.map(({ preview, original, description }) => {
-return `<li><a class="gallery__item" href="large-image.jpg">
+return `<a class="gallery__item" href="${original}">
 <img class="gallery__image"
 src="${preview}"
 data-source="${original}"
 alt="${description}"/>
-</a></li>`}).join('');
+</a>`}).join('');
 
-gallery.innerHTML = markup;
+gallery.insertAdjacentHTML('beforeend', markup);
 
 
-
-function onGalleryClick(evt) {
-    evt.preventDefault();
-    const lightbox = new SimpleLightbox('.gallery__item', {
-        captionData: 'alt',
+// function onGalleryClick(evt) {
+//     evt.preventDefault();
+//     const lightbox = 
+new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
         captionDelay: 250,
     });
 
-}
 
-console.log(galleryItems);
+
+// console.log(galleryItems);
